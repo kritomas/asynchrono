@@ -1,3 +1,9 @@
+import json
+
+with open("config.json") as file:
+	conf = json.load(file)
+
+
 def main(scheduler):
 	total = 0
 	yield
@@ -6,7 +12,7 @@ def main(scheduler):
 		for line in file:
 			total += int(line)
 			iterations += 1
-			if iterations >= 1000:
+			if iterations >= conf["sum"]["yield_every"]:
 				iterations = 0
 				yield
 	print("sum: Total =", total)

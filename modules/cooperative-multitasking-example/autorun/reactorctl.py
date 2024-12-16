@@ -1,4 +1,8 @@
 from time import sleep, time
+import json
+
+with open("config.json") as file:
+	conf = json.load(file)
 
 def main(scheduler):
 	start = time()
