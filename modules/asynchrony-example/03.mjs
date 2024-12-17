@@ -1,5 +1,6 @@
 import { setTimeout } from 'timers/promises';
 import { Mutex } from 'async-mutex';
+import { readFileSync } from 'fs';
 
 function BankAccount()
 {
@@ -58,10 +59,15 @@ function withdrawCoins(account, amount)
 	}
 }
 
+const conf = JSON.parse(readFileSync("./config.json"))
+
 let account = new BankAccount();
-await account.deposit(1000);
+await account.deposit(conf.o_three.initial_balance);
 console.log(account.balance);
-depositCoins(account, 1000);
-withdrawCoins(account, 100);
-while (account.operations < 1 + 1000 + 100) {await setTimeout(1);}
+depositCoins(account, conf.o_three.total_deposit);
+withdrawCoins(account, conf.o_three.total_withdrawal);
+while (account.operations < 1 + conf.o_three.total_deposit + conf.o_three.total_withdrawal)
+{
+	await setTimeout(1);
+}
 console.log(account.balance);
