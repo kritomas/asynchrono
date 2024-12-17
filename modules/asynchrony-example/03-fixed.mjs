@@ -4,6 +4,7 @@ import { Mutex } from 'async-mutex';
 function BankAccount()
 {
 	this.balance = 0;
+	this.operations = 0;
 	this.mutex = new Mutex();
 
 	this.deposit = async (amount) =>
@@ -20,6 +21,7 @@ function BankAccount()
 		let intermediary = this.balance + amount;
 		this.balance = intermediary;
 		await setTimeout(1);
+		++this.operations;
 		release();
 	}
 	this.withdraw = async (amount) =>
@@ -41,6 +43,7 @@ function BankAccount()
 		await setTimeout(1);
 		this.balance = intermediary;
 		// await setTimeout(1);
+		++this.operations;
 		release();
 	}
 }
@@ -65,5 +68,5 @@ await account.deposit(1000);
 console.log(account.balance);
 depositCoins(account, 1000);
 withdrawCoins(account, 100);
-await setTimeout(1500);
+while (account.operations < 1 + 1000 + 100) {await setTimeout(1);}
 console.log(account.balance);
