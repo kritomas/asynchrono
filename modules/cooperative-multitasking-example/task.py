@@ -14,8 +14,8 @@ class Scheduler:
 		while len(self._starting) > 0:
 			try:
 				self._tasks.append(self._starting[0].run(self))
-			except:
-				pass # Silently ignore
+			except Exception as error:
+				print(error)
 			self._starting.pop(0)
 		while len(self._tasks) > 0:
 			index = 0
@@ -25,12 +25,13 @@ class Scheduler:
 					index += 1
 				except StopIteration:
 					self._tasks.pop(index)
-				except:
+				except Exception as error:
+					print(error)
 					self._tasks.pop(index)
 
 			while len(self._starting) > 0:
 				try:
 					self._tasks.append(self._starting[0].run(self))
-				except:
-					pass # Silently ignore
+				except Exception as error:
+					print(error)
 				self._starting.pop(0)
