@@ -16,6 +16,7 @@ class Init(Task):
 		for d in directory:
 			if re.fullmatch("[a-zA-Z0-9.]*\\.py", d):
 				programs.append(d[:-3])
+		print("Welcome to BryndzOS")
 		for p in programs:
 			module = importlib.import_module("autorun." + p, "autorun")
 			scheduler.addTask(ModuleTask(module))

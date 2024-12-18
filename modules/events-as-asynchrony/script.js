@@ -20,3 +20,5 @@ button3.addEventListener("click", (event) =>
 	console.log(event);
 	text.innerText = "Button 3 clicked :)";
 });
+
+console.log("I am min-ding my own bus-iness la dee da dee daaa")
