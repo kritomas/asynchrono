@@ -99,6 +99,12 @@ if (conf.o_three.total_withdrawal < 0)
 	throw new Error("Config entry o_three.total_withdrawal must be not be negative");
 }
 
+/**
+ * Deposits money in pennies (eg. a whole bunch of 1$ deposits).
+ *
+ * @param account The account to deposit into.
+ * @param amount The total amount to deposit.
+ */
 function depositCoins(account, amount)
 {
 	for (let i = 0; i < amount; ++i)
@@ -106,6 +112,12 @@ function depositCoins(account, amount)
 		account.deposit(1);
 	}
 }
+/**
+ * Withdraws money in pennies (eg. a whole bunch of 1$ withdrawals).
+ *
+ * @param account The account to withdraw from.
+ * @param amount The total amount to withdraw.
+ */
 function withdrawCoins(account, amount)
 {
 	for (let i = 0; i < amount; ++i)
