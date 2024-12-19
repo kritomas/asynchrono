@@ -11,7 +11,7 @@ with open("config.json") as file:
 		raise Exception("sum: Config entry sum.yield_every must be an integer")
 
 	if not conf["sum"]["yield_every"] > 0:
-		raise Exception("Config entry sum.yield_every must be positive")
+		raise Exception("sum: Config entry sum.yield_every must be positive")
 
 
 def main(scheduler):
@@ -24,6 +24,6 @@ def main(scheduler):
 			iterations += 1
 			if iterations >= conf["sum"]["yield_every"]:
 				iterations = 0
-				yield
+				yield # Let's save Chernobyl
 	print("sum: Total =", total)
 	yield

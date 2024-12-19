@@ -22,14 +22,14 @@ async function slowDivide(a, b)
 
 async function main()
 {
-	let promise = slowDivide(69, 0);
+	let promise = slowDivide(69, 0); // The 0 will now cause an exception
 	console.log(promise);
 	console.log(divide(420, 1337));
 	console.log(divide(69, 80085));
 	let result;
 	try
 	{
-		result = await promise;
+		result = await promise; // For the exception to be caught, the promise must be awaited before it is thrown.
 		console.log(promise);
 		console.log(result);
 	}

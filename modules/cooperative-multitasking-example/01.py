@@ -1,12 +1,12 @@
 from task import *
 
 class NameBot(Task):
-	def run(self, scheduler):
+	def start(self, scheduler):
 		name = input("What is yo name: ")
 		yield
 		print("Sup", name)
 class EvalBot(Task):
-	def run(self, scheduler):
+	def start(self, scheduler):
 		print(eval(input("Expreson: ")))
 		yield
 
@@ -18,4 +18,4 @@ class Init(Task):
 		scheduler.addTask(EvalBot())
 
 scheduler = Scheduler(Init())
-scheduler.run()
+scheduler.start()

@@ -44,21 +44,6 @@ function BankAccount()
 	}
 }
 
-function depositCoins(account, amount)
-{
-	for (let i = 0; i < amount; ++i)
-	{
-		account.deposit(1);
-	}
-}
-function withdrawCoins(account, amount)
-{
-	for (let i = 0; i < amount; ++i)
-	{
-		account.withdraw(1);
-	}
-}
-
 const conf = JSON.parse(readFileSync("./config.json"));
 if (conf.o_three == undefined)
 {
@@ -104,6 +89,34 @@ if (conf.o_three.total_withdrawal < 0)
 	throw new Error("Config entry o_three.total_withdrawal must be not be negative");
 }
 
+/**
+ * Deposits money in pennies (eg. a whole bunch of 1$ deposits).
+ *
+ * @param account The account to deposit into.
+ * @param amount The total amount to deposit.
+ */
+function depositCoins(account, amount)
+{
+	for (let i = 0; i < amount; ++i)
+	{
+		account.deposit(1); // Lack of `await` here causes all deposits to happen asynchronously...
+	}
+}
+/**
+ * Withdraws money in pennies (eg. a whole bunch of 1$ withdrawals).
+ *
+ * @param account The account to withdraw from.
+ * @param amount The total amount to withdraw.
+ */
+function withdrawCoins(account, amount)
+{
+	for (let i = 0; i < amount; ++i)
+	{
+		account.withdraw(1); // ...Which also holds true for withdrawals here.
+	}
+}
+// In the end, the scheduler switches in the middle of deposits/withdrawals, which causes a race condition with the account balance....
+
 let account = new BankAccount();
 await account.deposit(conf.o_three.initial_balance);
 console.log(account.balance);
@@ -113,4 +126,4 @@ while (account.operations < 1 + conf.o_three.total_deposit + conf.o_three.total_
 {
 	await setTimeout(1);
 }
-console.log(account.balance);
+console.log(account.balance); // ...And so, the balance will be incorrect.

@@ -2,15 +2,27 @@ from task import *
 import importlib, os, re
 
 class ModuleTask(Task):
+	"""
+	Task as a Python module.
+	"""
 	def __init__(self, module):
+		"""
+		Initializes the task.
+		Parameters:
+		`module`: The modue to use as a task. It must have a main(scheduler) global function.
+		"""
 		self._module = module
 
-	def run(self, scheduler):
+	def start(self, scheduler):
 		for v in self._module.main(scheduler):
 			yield v
 
 class Init(Task):
-	def run(self, scheduler):
+	"""
+	The Init system used for this example.
+	It loads as a task everything in the `autorun` directory.
+	"""
+	def start(self, scheduler):
 		directory = os.listdir("autorun")
 		programs = []
 		for d in directory:
@@ -23,4 +35,4 @@ class Init(Task):
 		yield
 
 scheduler = Scheduler(Init())
-scheduler.run()
+scheduler.start()

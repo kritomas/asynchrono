@@ -24,7 +24,7 @@ def main(scheduler):
 	start = time()
 	end = time()
 	while True:
-		sleep(conf["reactorctl"]["stabilisation_time"])
+		sleep(conf["reactorctl"]["stabilisation_time"]) # [Insert complex reactor stabilisation shenanigans here]
 		start = end
 		end = time()
 		if end - start > conf["reactorctl"]["stabilisation_interval"]:

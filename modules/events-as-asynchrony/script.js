@@ -21,4 +21,5 @@ button3.addEventListener("click", (event) =>
 	text.innerText = "Button 3 clicked :)";
 });
 
-console.log("I am min-ding my own bus-iness la dee da dee daaa")
+console.log("I am min-ding my own bus-iness la dee da dee daaa") // The code flow may continue beyond the event listener setup...
+// ...The browser goes back and runs them asynchronously when the appropriate events occur.
