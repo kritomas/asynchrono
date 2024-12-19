@@ -1,11 +1,14 @@
 {
-	"num_gen": {
+	"num_gen":
+	{
 		"total": 10000000
 	},
-	"sum": {
+	"sum":
+	{
 		"yield_every": 10000
 	},
-	"reactorctl": {
+	"reactorctl":
+	{
 		"stabilisation_time": 0.001,
 		"stabilisation_interval": 1
 	}

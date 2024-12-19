@@ -1,5 +1,6 @@
 {
-	"o_three": {
+	"o_three":
+	{
 		"initial_balance": 1000,
 		"total_deposit": 1000,
 		"total_withdrawal": 100
