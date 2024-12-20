@@ -17,13 +17,19 @@ with open("config.json") as file:
 def main(scheduler):
 	total = 0
 	yield
-	with open("_numbers.txt", "r") as file:
-		iterations = 0
-		for line in file:
-			total += int(line)
-			iterations += 1
-			if iterations >= conf["sum"]["yield_every"]:
-				iterations = 0
-				yield # Let's save Chernobyl
-	print("sum: Total =", total)
+	try:
+		with open("_numbers.txt", "r") as file:
+			iterations = 0
+			for line in file:
+				try:
+					total += int(line)
+				except ValueError:
+					print("sum: ERROR: noninteger, skipping")
+				iterations += 1
+				if iterations >= conf["sum"]["yield_every"]:
+					iterations = 0
+					yield # Let's save Chernobyl
+		print("sum: Total =", total)
+	except FileNotFoundError:
+		print("sum: ERROR: Couldn't find file with numbers")
 	yield
