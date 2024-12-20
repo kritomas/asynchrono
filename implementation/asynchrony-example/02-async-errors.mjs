@@ -29,7 +29,7 @@ async function main()
 	let result;
 	try
 	{
-		result = await promise; // For the exception to be caught, the promise must be awaited before it is thrown.
+		result = await promise;
 		console.log(promise);
 		console.log(result);
 	}

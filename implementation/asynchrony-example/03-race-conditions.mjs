@@ -127,3 +127,4 @@ while (account.operations < 1 + conf.o_three.total_deposit + conf.o_three.total_
 	await setTimeout(1);
 }
 console.log(account.balance); // ...And so, the balance will be incorrect.
+console.log("Expected balance: " + (conf.o_three.initial_balance + conf.o_three.total_deposit - conf.o_three.total_withdrawal));
