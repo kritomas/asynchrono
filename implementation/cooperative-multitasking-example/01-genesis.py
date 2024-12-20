@@ -11,7 +11,7 @@ class EvalBot(Task):
 		yield
 
 class Init(Task):
-	def run(self, scheduler):
+	def start(self, scheduler):
 		print("Welcome to BryndzOS")
 		yield
 		scheduler.addTask(NameBot())

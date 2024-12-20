@@ -26,6 +26,6 @@ See also: `task.py`
 
 A more advanced example. This one loads every python script in the `autorun` directory and runs them as a separate task. These scripts must have a `main` global function (sounds familiar?), which takes the scheduler as its sole argument.
 
-The `main` function should have `yield` keywords dotted around. These are used to return control back to the scheduler, so that other tasks may execute.
+The `main` function should have `yield` statements dotted around. These are used to return control back to the scheduler, so that other tasks may execute.
 
 Note that no threads nor processes are ever created.
