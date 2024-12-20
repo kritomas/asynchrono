@@ -19,6 +19,13 @@ class Scheduler:
 		"""
 		self._starting = [init]
 		self._tasks = []
+	def _initTasks(self):
+		while len(self._starting) > 0:
+			try:
+				self._tasks.append(self._starting[0].start(self)) # Add new tasks to the scheduling
+			except Exception as error:
+				print(error)
+			self._starting.pop(0)
 
 	def addTask(self, task):
 		"""
@@ -32,12 +39,7 @@ class Scheduler:
 		"""
 		Starts the scheduler.
 		"""
-		while len(self._starting) > 0:
-			try:
-				self._tasks.append(self._starting[0].start(self)) # Add new tasks to the scheduling
-			except Exception as error:
-				print(error)
-			self._starting.pop(0)
+		self._initTasks()
 		while len(self._tasks) > 0:
 			index = 0
 			while index < len(self._tasks):
@@ -49,10 +51,4 @@ class Scheduler:
 				except Exception as error:
 					print(error)
 					self._tasks.pop(index)
-
-			while len(self._starting) > 0:
-				try:
-					self._tasks.append(self._starting[0].start(self)) # Add new tasks to the scheduling
-				except Exception as error:
-					print(error)
-				self._starting.pop(0)
+			self._initTasks()

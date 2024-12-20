@@ -9,7 +9,8 @@
 	},
 	"reactorctl":
 	{
-		"stabilisation_time": 0.001,
-		"stabilisation_interval": 1
+		"stabilization_time": 0.001,
+		"stabilization_interval": 1,
+		"log_interval": 200
 	}
 }
