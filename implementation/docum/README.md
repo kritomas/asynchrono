@@ -2,14 +2,14 @@
 
 A shared document thingy.
 
+Taken from [here](https://github.com/kritomas/docum), and modified to suit this repo.
+
 # Installation
 
 1.	Install dependencies: `nodejs`, `npm`.
-2.	Install node modules by invoking `npm i` in `docum`.
-3.	Ensure that `docum/start-server.sh` is executable.
-4.	Copy all of `docum` into `/var`.
-5.	Copy `docum.service` into `/etc/systemd/system`.
+2.	Install node modules by invoking `npm i`.
 
 # Usage
 
-1.	Start the server by starting the `docum` service.
+1.	Invoke `node main.js`.
+2.	Open `127.0.0.1:1337` in a web browser.

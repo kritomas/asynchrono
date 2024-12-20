@@ -1,6 +1,6 @@
 # Asynchrony Example
 
-This demo has multiple parts. Note that some parts need to be set up with `npm i`.
+This demo has multiple parts. Note that some parts need to be set up by invoking `npm i`.
 
 # Parts
 

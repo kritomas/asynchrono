@@ -25,7 +25,8 @@ function rgbToHex(r, g, b) {
 
 function createUser(username)
 {
-	return {
+	return
+	{
 		name: username,
 		ptrX: 0,
 		ptrY: 0,
